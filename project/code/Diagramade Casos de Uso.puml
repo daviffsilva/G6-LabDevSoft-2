@@ -1,0 +1,35 @@
+@startuml
+actor "Cliente" as Cliente
+actor "Agente" as Agente
+
+rectangle Sistema{
+
+usecase "Cadastrar-se" as Cadastro
+usecase "Gerenciar Algueis" as GerenciarAlugueis
+usecase "Introduzir Pedido de Aluguel" as IntroduzirPedido
+usecase "Modificar Pedido de Aluguel" as ModificarPedido
+usecase "Consultar Pedido de Aluguel" as ConsultarPedido
+usecase "Cancelar Pedido de Aluguel" as CancelarPedido
+usecase "Analisar Pedido Financeiro" as AnalisarFinanceiro
+usecase "Executar Contrato" as ExecutarContrato
+usecase "Registrar Automóvel" as RegistrarAutomovel
+usecase "Gerar Contrato de Crédito" as GerarContratoCredito
+
+Agente --> ModificarPedido
+Agente --> AnalisarFinanceiro
+Agente --> RegistrarAutomovel
+Agente --> GerarContratoCredito
+
+Cliente --> Cadastro
+
+Cadastro ----> (GerenciarAlugueis) : <<extends>>
+IntroduzirPedido --> (GerenciarAlugueis)
+ModificarPedido --> (GerenciarAlugueis)
+ConsultarPedido --> (GerenciarAlugueis)
+CancelarPedido --> (GerenciarAlugueis)
+IntroduzirPedido --> (AnalisarFinanceiro) : <<include>>
+AnalisarFinanceiro --> (GerarContratoCredito) : <<extends>>
+AnalisarFinanceiro --> (ExecutarContrato) : <<include>>
+
+}
+@enduml
