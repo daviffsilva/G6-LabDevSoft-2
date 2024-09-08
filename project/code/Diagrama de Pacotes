@@ -1,46 +1,34 @@
 @startuml
 package "Pacote de Usuários" {
   abstract class Usuario {
-    - login : String
-    - senha : String
-    + autenticar(login: String, senha: String) : boolean
+    
   }
 
-  class Cliente {
-    + getIdentificacao() : String
-    + criarPedido(dados: String) : Aluguel
-    + consultarPedido(id: int) : Aluguel
-    + modificarPedido(id: int, dados: String) : Aluguel
+  abstract class Cliente {
+   
   }
 
   class Agente {
-    + modificarPedido(id: int, dados: String) : Aluguel
+   
   }
 
-  Cliente --|> Usuario
-  Agente --|> Usuario
+  Usuario <|-- Cliente
+  Usuario <|-- Agente
+  Cliente <|-- Pessoa
+  Cliente <|-- Empresa
 }
 
 package "Pacote de Pedidos e Contratos" {
   class Aluguel {
-    - cliente : Cliente
-    - contrato : ContratoCredito
-    - automovel : Automovel
-    - statusAluguel : StatusAluguel
+   
   }
 
   class ContratoCredito {
-    - cliente : Cliente
-    - aprovado : boolean
-    - credito : double
+    
   }
 
   class StatusAluguel {
-    - ABERTO : int
-    - EM_AVALIACAO : int
-    - APROVADO : int
-    - FECHADO : int
-    - REPROVADO : int
+    
   }
 
   Aluguel -- Cliente
@@ -50,11 +38,7 @@ package "Pacote de Pedidos e Contratos" {
 
 package "Pacote de Automóveis" {
   class Automovel {
-    - matricula : int
-    - ano : int
-    - marca : String
-    - modelo : String
-    - placa : String
+    
   }
   
   Automovel -- Aluguel
@@ -62,30 +46,19 @@ package "Pacote de Automóveis" {
 
 package "Pacote de Dados de Contratantes" {
   class EmpregoPessoa {
-    - cnpjEmpregador : String
-    - nomeEmpregador : String
-    - renda : double
-    - rendaComprovada : boolean
+    
   }
 
   class Pessoa {
-    - rg : String
-    - cpf : String
-    - nome : String
-    - endereco : String
-    - profissao : String
-    - listEmpregadores : List<EmpregoPessoa>
-    + cadastrarEmpregador(empregador: EmpregoPessoa) : boolean
+    
   }
 
   class Empresa {
-    - cnpj : String
-    - nome : String
+    
   }
 
   Pessoa -- EmpregoPessoa
   Empresa -- EmpregoPessoa
-  Empresa --|> Pessoa
 }
 
 ' Dependências entre pacotes
