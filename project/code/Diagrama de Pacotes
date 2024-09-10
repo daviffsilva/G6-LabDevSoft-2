@@ -1,0 +1,69 @@
+@startuml
+package "Pacote de Usuários" {
+  abstract class Usuario {
+    
+  }
+
+  abstract class Cliente {
+   
+  }
+
+  class Agente {
+   
+  }
+
+  Usuario <|-- Cliente
+  Usuario <|-- Agente
+  Cliente <|-- Pessoa
+  Cliente <|-- Empresa
+}
+
+package "Pacote de Pedidos e Contratos" {
+  class Aluguel {
+   
+  }
+
+  class ContratoCredito {
+    
+  }
+
+  class StatusAluguel {
+    
+  }
+
+  Aluguel -- Cliente
+  Aluguel -- ContratoCredito
+  Aluguel -- Automovel
+}
+
+package "Pacote de Automóveis" {
+  class Automovel {
+    
+  }
+  
+  Automovel -- Aluguel
+}
+
+package "Pacote de Dados de Contratantes" {
+  class EmpregoPessoa {
+    
+  }
+
+  class Pessoa {
+    
+  }
+
+  class Empresa {
+    
+  }
+
+  Pessoa -- EmpregoPessoa
+  Empresa -- EmpregoPessoa
+}
+
+' Dependências entre pacotes
+"Pacote de Pedidos e Contratos" ..> "Pacote de Dados de Contratantes" : <<import>>
+"Pacote de Pedidos e Contratos" ..> "Pacote de Automóveis" : <<import>>
+"Pacote de Usuários" ..> "Pacote de Pedidos e Contratos" : <<access>>
+"Pacote de Automóveis" ..> "Pacote de Dados de Contratantes" : <<import>>
+@enduml

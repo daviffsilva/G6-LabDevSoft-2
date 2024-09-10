@@ -1,0 +1,68 @@
+@startuml
+class Automovel{
+  -matricula : int
+  -ano : int
+  -marca : String
+  -modelo : String
+  -placa : String
+}
+abstract Usuario{
+  -login : String
+  -senha : String
+  +autenticar(,, ,) : boolean
+}
+class Aluguel{
+  -cliente : Cliente
+  -contrato : ContratoCredito
+  -automovel : Automovel
+  -statusAluguel : StatusAluguel
+}
+class ContratoCredito{
+  -cliente : Cliente
+  -aprovado : boolean
+  -credito : double
+}
+class Agente{
+  +modificarPedido(,) : Aluguel
+}
+abstract Cliente{
+  +getIdentificacao() : String
+  +criarPedido(,) : Aluguel
+  +consultarPedido() : Aluguel
+  +modificarPedido(,) : Aluguel
+}
+Agente --|> Usuario
+Cliente --|> Usuario
+class StatusAluguel{
+  -ABERTO : int
+  -EM_AVALIACAO : int
+  -APROVADO : int
+  -FECHADO : int
+  -REPROVADO : int
+}
+Aluguel -- Cliente
+Automovel -- Aluguel
+ContratoCredito -- Aluguel
+class EmpregoPessoa{
+  -cnpjEmpregador : String
+  -nomeEmpregador : String
+  -renda : double
+  -rendaComprovada : boolean
+}
+Pessoa -- EmpregoPessoa
+class Pessoa{
+  -rg : String
+  -cpf : String
+  -nome : String
+  -endereco : String
+  -profissao : String
+  -listEmpregadores : EmpregoPessoa
+  +cadastrarEmpregador() : boolean
+}
+Pessoa --|> Cliente
+class Empresa{
+  -cnpj : String
+  -nome : String
+}
+Empresa --|> Cliente
+@enduml
