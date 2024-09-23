@@ -1,13 +1,17 @@
 package com.grupo6.lab2.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name="usuario")
-public abstract class Usuario {
+@Setter
+@Getter
+public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -16,4 +20,6 @@ public abstract class Usuario {
 
     @Column(name = "senha")
     private String senha;
+
+
 }

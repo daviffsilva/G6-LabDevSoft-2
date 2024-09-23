@@ -3,14 +3,8 @@ package com.grupo6.lab2.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "status_aluguel")
-public enum StatusAluguel {
-    ABERTO(),
-    EM_AVALIACAO(),
-    APROVADO(),
-    FECHADO(),
-    REPROVADO();
-
+@Table(name = "contrato_credito")
+public class ContratoCredito {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
