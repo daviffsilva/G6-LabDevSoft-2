@@ -1,0 +1,62 @@
+@startuml
+title Diagrama de Componentes do Sistema
+
+package "Frontend" {
+    component "Browser (Cliente)"
+    component "Browser (Agentes)"
+
+}
+
+package "Backend" {
+    component "Subsistema de Páginas Dinâmicas (Web)" {
+        component "Construção de Páginas Web"
+    }
+    component "Subsistema de Gerenciamento de Pedidos e Contratos" {
+        component "Criação de Pedidos"
+        component "Análise Financeira"
+        component "Avaliação de Pedidos"
+        component "Formalização de Contratos"
+    }
+    component "Gerenciamento de Clientes" {
+        component "Cadastro de Cliente"
+        component "Edição de Cliente"
+        component "Exclusão de Cliente"
+    }
+    component "Gerenciamento de Veículos" {
+        component "Cadastro de Veículo"
+        component "Edição de Veículo"
+        component "Exclusão de Veículo"
+    }
+    component "Repositórios" {
+        component "Repositório de Clientes"
+        component "Repositório de Contratos"
+        component "Repositório de Veículos"
+    }
+    database "Banco de Dados" as db
+}
+
+"Browser (Cliente)" --> "Subsistema de Páginas Dinâmicas (Web)"
+"Browser (Agentes)" --> "Subsistema de Páginas Dinâmicas (Web)"
+
+"Construção de Páginas Web" --> "Criação de Pedidos"
+
+"Criação de Pedidos" --> "Análise Financeira"
+"Análise Financeira" --> "Avaliação de Pedidos"
+"Avaliação de Pedidos" --> "Formalização de Contratos"
+
+"Formalização de Contratos" --> "Repositório de Contratos"
+"Formalização de Contratos" --> "Repositório de Clientes"
+
+"Cadastro de Cliente" --> "Repositório de Clientes"
+"Edição de Cliente" --> "Repositório de Clientes"
+"Exclusão de Cliente" --> "Repositório de Clientes"
+
+"Cadastro de Veículo" --> "Repositório de Veículos"
+"Edição de Veículo" --> "Repositório de Veículos"
+"Exclusão de Veículo" --> "Repositório de Veículos"
+
+"Repositório de Clientes" --> db
+"Repositório de Contratos" --> db
+"Repositório de Veículos" --> db
+
+@enduml
