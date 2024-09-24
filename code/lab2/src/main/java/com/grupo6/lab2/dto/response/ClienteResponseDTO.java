@@ -20,6 +20,6 @@ public class ClienteResponseDTO {
     public ClienteResponseDTO(Cliente cliente, PessoaFisica pessoaFisica){
         this(cliente);
         this.nome = cliente.getNome();
-        this.pessoaFisica = new PessoaFisicaResponseDTO();
+        this.pessoaFisica = new PessoaFisicaResponseDTO(pessoaFisica);
     }
 }
