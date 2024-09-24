@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class UsuarioRequestDTO {
+    private Long id;
     private String usuario;
     private String senha;
 }

@@ -5,8 +5,7 @@ import lombok.Getter;
 @Getter
 public class ClienteRequestDTO {
 
-    private String id;
-
+    private Long id;
     private UsuarioRequestDTO usuario;
     private PessoaFisicaRequestDTO pessoaFisica;
     private EmpresaRequestDTO empresa;

@@ -1,12 +1,14 @@
 package com.grupo6.lab2.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.List;
 
 // Talvez um Id proprio para pessoa fisica ao inves de ser uma entidade fraca
 @Entity
 @Table(name = "pessoa_fisica")
+@Getter
 public class PessoaFisica extends Cliente{
     @Column(name = "rg")
     private String rg;
