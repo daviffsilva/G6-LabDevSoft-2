@@ -1,6 +1,7 @@
 @startuml
 actor "Cliente" as Cliente
 actor "Agente" as Agente
+actor "Agente (Banco)" as AgenteBanco 
 
 rectangle Sistema{
 
@@ -15,21 +16,22 @@ usecase "Executar Contrato" as ExecutarContrato
 usecase "Registrar Automóvel" as RegistrarAutomovel
 usecase "Gerar Contrato de Crédito" as GerarContratoCredito
 
-Agente --> ModificarPedido
-Agente --> AnalisarFinanceiro
-Agente --> RegistrarAutomovel
-Agente --> GerarContratoCredito
+Agente -- ModificarPedido
+AgenteBanco -- AnalisarFinanceiro
+Agente -- RegistrarAutomovel
+AgenteBanco -- GerarContratoCredito
+Agente -- ConsultarPedido
+Cliente -- Cadastro
 
-Cliente --> Cadastro
-
-Cadastro ----> (GerenciarAlugueis) : <<extends>>
+Cadastro ....> (GerenciarAlugueis) : <<extends>>
 IntroduzirPedido --> (GerenciarAlugueis)
 ModificarPedido --> (GerenciarAlugueis)
 ConsultarPedido --> (GerenciarAlugueis)
 CancelarPedido --> (GerenciarAlugueis)
-IntroduzirPedido --> (AnalisarFinanceiro) : <<include>>
-AnalisarFinanceiro --> (GerarContratoCredito) : <<extends>>
-AnalisarFinanceiro --> (ExecutarContrato) : <<include>>
+IntroduzirPedido ..> (AnalisarFinanceiro) : <<include>>
+AnalisarFinanceiro ..> (GerarContratoCredito) : <<extends>>
+AnalisarFinanceiro ..> (ExecutarContrato) : <<extends>>
+GerarContratoCredito ..> (ExecutarContrato) : <<extends>>
 
 }
 @enduml
