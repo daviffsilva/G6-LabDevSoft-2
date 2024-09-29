@@ -67,4 +67,5 @@ package "Pacote de Dados de Contratantes" {
 "Pacote de Usuários" ..> "Pacote de Pedidos e Contratos" : <<access>>
 "Pacote de Automóveis" ..> "Pacote de Dados de Contratantes" : <<import>>
 "Usuario" -- "StatusAluguel"
+"Agente" -L "Pacote de Automóveis"
 @enduml
