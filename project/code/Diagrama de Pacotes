@@ -63,7 +63,8 @@ package "Pacote de Dados de Contratantes" {
 
 ' Dependências entre pacotes
 "Pacote de Pedidos e Contratos" ..> "Pacote de Dados de Contratantes" : <<import>>
-"Pacote de Pedidos e Contratos" ..> "Pacote de Automóveis" : <<import>>
+"Pacote de Pedidos e Contratos" .L.> "Pacote de Automóveis" : <<import>>
 "Pacote de Usuários" ..> "Pacote de Pedidos e Contratos" : <<access>>
 "Pacote de Automóveis" ..> "Pacote de Dados de Contratantes" : <<import>>
+"Usuario" -- "StatusAluguel"
 @enduml
