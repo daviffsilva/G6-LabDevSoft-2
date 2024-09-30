@@ -1,0 +1,25 @@
+@startuml
+node "Servidor Central" {
+    [Gerenciador de Pedidos e Contratos] --> [Banco de Dados] : Armazena/Consulta
+    [Gerenciador de Pedidos e Contratos] --> [Construtor Dinâmico de Páginas Web] : Envia dados processados
+}
+
+node "Cliente" {
+    [Navegador Web] --> [Construtor Dinâmico de Páginas Web] : Solicitação de páginas
+}
+
+node "Agente" {
+    [Navegador Web] --> [Construtor Dinâmico de Páginas Web] : Solicitação de páginas
+}
+
+node "Banco de Dados" {
+    [Dados dos Contratantes]
+    [Dados dos Veículos]
+    [Contratos e Pedidos]
+}
+
+Cliente --> "Servidor Central" : "Internet"
+Agente --> "Servidor Central" : "Internet"
+"Servidor Central" --> "Banco de Dados" : "Conexão ao BD"
+
+@enduml
