@@ -7,4 +7,7 @@ import java.util.Optional;
 
 public interface IEmpresaService {
     Optional<Empresa> register(EmpresaRequestDTO empresaRequestDTO);
+    Optional<Empresa> getEmpresaById(Long id);
+    Optional<Empresa> updateEmpresa(Long id, EmpresaRequestDTO empresaRequestDTO);
+    boolean deleteEmpresa(Long id);
 }
