@@ -7,4 +7,7 @@ import java.util.Optional;
 
 public interface IPessoaFisicaService {
     Optional<PessoaFisica> register(PessoaFisicaRequestDTO pessoaFisicaRequestDTO);
+    Optional<PessoaFisica> getPessoaFisicaById(Long id);
+    Optional<PessoaFisica> updatePessoaFisica(Long id, PessoaFisicaRequestDTO pessoaFisicaRequestDTO);
+    boolean deletePessoaFisica(Long id);
 }

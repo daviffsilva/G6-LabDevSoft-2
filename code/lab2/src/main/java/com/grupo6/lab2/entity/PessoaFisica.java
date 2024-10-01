@@ -2,6 +2,7 @@ package com.grupo6.lab2.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "pessoa_fisica")
 @Getter
+@Setter
 public class PessoaFisica extends Cliente{
     @Column(name = "rg")
     private String rg;
